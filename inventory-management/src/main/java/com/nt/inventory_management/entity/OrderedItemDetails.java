@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 @Entity
-@Table(name = "item_details")
+@Table
 @Builder
 @AllArgsConstructor
 public class OrderedItemDetails {

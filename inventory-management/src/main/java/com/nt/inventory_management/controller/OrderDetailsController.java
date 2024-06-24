@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/order")
+@CrossOrigin
 public class OrderDetailsController {
 
     private final OrderDetailsService service;
@@ -27,7 +28,7 @@ public class OrderDetailsController {
     }
 
     @GetMapping
-    public List<OrderDetails> getAllOrderDetailss() {
+    public List<OrderDetails> getAllOrderDetails() {
         return service.getAllOrderDetails();
     }
     @GetMapping("/getSampleOrder")
@@ -35,7 +36,7 @@ public class OrderDetailsController {
 
         OrderDetails orderDetails = new OrderDetails();
         List<Item> items = Arrays.asList(Item.builder().build(), Item.builder().build());
-        orderDetails.setOrderedItems(items);
+//        orderDetails.setOrderedItems(items);
         return orderDetails;
     }
 

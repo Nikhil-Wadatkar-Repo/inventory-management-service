@@ -18,10 +18,18 @@ public class OrderDetails {
     private Long orderId;
     private Date createdDate;
     private String createdBy;
+    private String customerName;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "order_item_fk_Id", referencedColumnName = "orderId")
     private List<OrderedItemDetails> orderedItems;
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 
     public Long getOrderId() {
         return orderId;

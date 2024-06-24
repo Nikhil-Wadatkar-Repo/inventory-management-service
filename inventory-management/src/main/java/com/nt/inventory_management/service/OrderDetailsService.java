@@ -42,7 +42,7 @@ public class OrderDetailsService {
         OrderDetails orderDetails = getOrderDetailsById(itemDTO.getOrderId());
         Item item = new Item();
         BeanUtils.copyProperties(itemDTO.getItemDetails(), item);
-        orderDetails.getOrderedItems().add(item);
+//        orderDetails.getOrderedItems().add(item);
         OrderDetails orderDetails1 = orderRepo.save(orderDetails);
         return orderDetails1;
     }
@@ -50,18 +50,18 @@ public class OrderDetailsService {
     public String deleteItemToExistedOrder(Long itemId, Long orderId) {
         String message = "Not deleted";
         OrderDetails orderDetails = getOrderDetailsById(orderId);
-        List<Item> orderedItems = orderDetails.getOrderedItems();
-
-        Iterator<Item> iterator = orderedItems.iterator();
-        while (iterator.hasNext()) {
-            Item item = iterator.next();
-            if (item.getItemId() == itemId) {
-                iterator.remove();
-                message = "Deleted Successfully";
-                break;
-
-            }
-        }
+//        List<Item> orderedItems = orderDetails.getOrderedItems();
+//
+//        Iterator<Item> iterator = orderedItems.iterator();
+//        while (iterator.hasNext()) {
+//            Item item = iterator.next();
+//            if (item.getItemId() == itemId) {
+//                iterator.remove();
+//                message = "Deleted Successfully";
+//                break;
+//
+//            }
+//        }
         return message;
     }
 }
