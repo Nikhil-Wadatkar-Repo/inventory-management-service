@@ -1,6 +1,6 @@
 package com.nt.inventory_management.controller;
 
-import com.nt.inventory_management.dto.ItemDTO;
+import com.nt.inventory_management.dto.OrderDTO;
 import com.nt.inventory_management.entity.Item;
 import com.nt.inventory_management.entity.OrderDetails;
 import com.nt.inventory_management.service.ExcelExportService;
@@ -47,8 +47,8 @@ public class OrderDetailsController {
     }
 
     @PostMapping("/createOrder")
-    public ResponseEntity<OrderDetails> createOrderDetails(@RequestBody OrderDetails OrderDetails) {
-        OrderDetails createdOrderDetails = service.saveOrderDetails(OrderDetails);
+    public ResponseEntity<OrderDetails> createOrderDetails(@RequestBody OrderDTO orderDTO) {
+        OrderDetails createdOrderDetails = service.saveOrderDetails(orderDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrderDetails);
     }
 
@@ -74,7 +74,7 @@ public class OrderDetailsController {
 //    }
 
     @PostMapping("/addItemToOrder")
-    public OrderDetails addItemToExistedOrder(ItemDTO itemDTO) {
+    public OrderDetails addItemToExistedOrder(OrderDTO itemDTO) {
         return service.addItemToExistedOrder(itemDTO);
     }
 

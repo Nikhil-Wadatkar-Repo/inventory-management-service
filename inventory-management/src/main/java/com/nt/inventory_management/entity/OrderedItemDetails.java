@@ -9,14 +9,13 @@ import lombok.Builder;
 @AllArgsConstructor
 public class OrderedItemDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long itemId;
     private String itemName;
     private String itemCategory;
     private String itemCode;
     private int quantity;
-    private double price;
+    private double rate;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private OrderDetails orderDetails;
@@ -30,7 +29,7 @@ public class OrderedItemDetails {
         this.itemCategory = itemCategory;
         this.itemCode = itemCode;
         this.quantity = quantity;
-        this.price = price;
+        this.rate = price;
     }
 
     public Long getItemId() {
@@ -73,11 +72,11 @@ public class OrderedItemDetails {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
+    public double getRate() {
+        return rate;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 }
