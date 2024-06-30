@@ -1,11 +1,9 @@
 package com.nt.inventory_management.dto;
 
-public class ItemList
+public class ItemListDTO
 {
     private Integer quantity;
-    private Integer itemCode;
-    private Integer price;
-    private Integer rate;
+    private String itemCode;
     private String itemName;
 
     public Integer getQuantity() {
@@ -16,29 +14,15 @@ public class ItemList
         this.quantity = quantity;
     }
 
-    public Integer getItemCode() {
+    public String getItemCode() {
         return itemCode;
     }
 
-    public void setItemCode(Integer itemCode) {
+    public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Integer getRate() {
-        return rate;
-    }
-
-    public void setRate(Integer rate) {
-        this.rate = rate;
-    }
 
     public String getItemName() {
         return itemName;

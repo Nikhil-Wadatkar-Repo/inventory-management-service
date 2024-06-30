@@ -1,4 +1,5 @@
 package com.nt.inventory_management.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +10,8 @@ import lombok.Builder;
 @AllArgsConstructor
 public class OrderedItemDetails {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long itemId;
     private String itemName;
     private String itemCategory;

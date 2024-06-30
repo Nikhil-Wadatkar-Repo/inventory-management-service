@@ -8,9 +8,8 @@ import java.util.List;
 @Component
 @Data
 public class OrderDTO {
-    private Long finalPrice;
     private String customerName;
     private String workerName;
-    private List<ItemList> itemLists;
+    private List<ItemListDTO> orderedItems;
 
 }

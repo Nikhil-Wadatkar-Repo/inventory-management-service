@@ -1,6 +1,8 @@
 package com.nt.inventory_management.controller;
 
+import com.nt.inventory_management.dto.CodeWisePrices;
 import com.nt.inventory_management.dto.OrderDTO;
+import com.nt.inventory_management.dto.OrderList;
 import com.nt.inventory_management.entity.Item;
 import com.nt.inventory_management.entity.OrderDetails;
 import com.nt.inventory_management.service.ExcelExportService;
@@ -9,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,15 +29,13 @@ public class OrderDetailsController {
     }
 
     @GetMapping
-    public List<OrderDetails> getAllOrderDetails() {
+    public List<OrderList> getAllOrderDetails() {
         return service.getAllOrderDetails();
     }
     @GetMapping("/getSampleOrder")
     public OrderDetails createSampleOrder(){
-
         OrderDetails orderDetails = new OrderDetails();
         List<Item> items = Arrays.asList(Item.builder().build(), Item.builder().build());
-//        orderDetails.setOrderedItems(items);
         return orderDetails;
     }
 
@@ -58,28 +57,9 @@ public class OrderDetailsController {
         return ResponseEntity.noContent().build();
     }
 
-//    @GetMapping("/export")
-//    public ResponseEntity<byte[]> exportToExcel() throws IOException {
-//        List<OrderDetails> OrderDetailss =new LinkedList<>();
-//
-//        ByteArrayOutputStream outputStream = excelExportService.exportItemsToExcel();
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=OrderDetailss.xlsx");
-//        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-//
-//        return ResponseEntity.ok()
-//                .headers(headers)
-//                .body(outputStream.toByteArray());
-//    }
-
-    @PostMapping("/addItemToOrder")
-    public OrderDetails addItemToExistedOrder(OrderDTO itemDTO) {
-        return service.addItemToExistedOrder(itemDTO);
+    @GetMapping("/getPrices")
+    public  List<CodeWisePrices> getAllPrices() {
+        return service.getAllPrices();
     }
 
-    @PostMapping("/deleteItemToOrder/{orderId}/{itemId}")
-    public String deleteItemToExistedOrder(@PathVariable("orderId") Long orderId, @PathVariable("itemId") Long itemId) {
-        return service.deleteItemToExistedOrder(itemId, orderId);
-    }
 }
